@@ -1,1 +1,1 @@
-web: gunicorn reddjango.wsgi
+web: gunicorn reddit.wsgi
