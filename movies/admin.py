@@ -1,3 +1,5 @@
 from django.contrib import admin
+from . models import MGS, Review
 
-# Register your models here.
+admin.site.register(MGS)
+admin.site.register(Review)
