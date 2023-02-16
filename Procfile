@@ -1,1 +1,1 @@
-web: gunicorn reddit.wsgi
+web: gunicorn review.wsgi
