@@ -1,0 +1,25 @@
+body {
+    background-color: #FAF0E6;
+}
+
+.brand {
+    font-family: Lato, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.red {
+    color: #D22B2B;
+}
+
+.green {
+    color: #008000;
+}
+
+.blue {
+    color: #0000FF;
+}
+
+footer {
+    background-color: #708090;
+}

@@ -1,4 +1,5 @@
-from django.shortcuts import render
-from django.views import generic, View
+from django.shortcuts import render, redirect, get_object_or_404
 
 
+def home(request):
+    return render(request, 'base.html', {})
