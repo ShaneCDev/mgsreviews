@@ -1,5 +1,7 @@
 from django.contrib import admin
-from . models import MGS, Review
+from . models import Movie, Review, Game, Show
 
-admin.site.register(MGS)
+admin.site.register(Movie)
+admin.site.register(Show)
+admin.site.register(Game)
 admin.site.register(Review)
