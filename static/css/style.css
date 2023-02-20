@@ -20,6 +20,12 @@ body {
     color: #0000FF;
 }
 
+.poster {
+    width: 800px;
+    height: 400px;
+    object-fit: contain;
+}
+
 footer {
     background-color: #708090;
 }
