@@ -5,7 +5,7 @@
     {% for movie in movies %}
     <div class="row featurette">
 
-        {% if movie.index % 2 != 0 %}
+        {% if forloop.index|divisibleby:2 != 0 %}
 
             <div class="col-md-7">
                 <h3>{{ movie.title }}</h3>
@@ -33,7 +33,7 @@
         {% endif %}
     </div>
 
-        {% if movie.index != movie.length %}
+        {% if forloop.index != forloop.length %}
             <hr class="featurette-divider">
         {% endif %}
     {% endfor %}
