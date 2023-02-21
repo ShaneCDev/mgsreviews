@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for game in games %}
+        <div class="row featurette">
+            {% if forloop.index|divisibleby:2 != 0 %}
+                <div class="col-md-7">
+                    <h3>{{ game.title }}</h3>
+                    <p>
+                        {{ game.description }}
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ game.poster.url }}" alt="{{ game.title }}">
+                </div>
+        </div>
+            {% else %}
+                <div class="col-md-5">
+                    <img src="{{ game.poster.url }}" alt="{{ game.title }}">
+                </div>
+                <div class="col-md-7">
+                    <h3>{{ game.title }}</h3>
+                    <p>
+                        {{ game.description }}
+                    </p>
+                </div>
+            {% endif %}
+    {% endfor %}
+{% endblock %}

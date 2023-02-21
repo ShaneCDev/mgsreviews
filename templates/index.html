@@ -1,23 +1,22 @@
 {% extends "base.html" %}
- 
+
 {% block content %}
 <div id="moviesCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        {% for movie in movies %}
-      <div class="carousel-item {% if forloop.first %} active {% endif %}">
-        <img src="{{ movie.poster.url }}" class="d-block w-100 poster" alt="...">
-      </div>
-        {% endfor %}
+  <div class="carousel-inner">
+    {% for movie in movies %}
+    <div class="container carousel-item {% if forloop.first %} active {% endif %}">
+      <img src="{{ movie.carousel_image.url }}" class="d-block w-100 poster" alt="...">
     </div>
-    
-    <button class="carousel-control-prev" type="button" data-bs-target="#moviesCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#moviesCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-    
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#moviesCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#moviesCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 {% endblock %}

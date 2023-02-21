@@ -16,3 +16,11 @@ def movies(request):
         'movies': movies
     }
     return render(request, 'movies.html', context)
+
+
+def games(request):
+    games = Game.objects.all()
+    context = {
+        'games': games
+    }
+    return render(request, 'games.html', context)

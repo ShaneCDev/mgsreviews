@@ -8,6 +8,7 @@ class Movie(models.Model):
     description = models.TextField(max_length=3000)
     poster = models.FileField(upload_to='')
     director = models.CharField(max_length=50)
+    carousel_image = models.FileField(upload_to='', null=True)
 
     def __str__(self):
         return self.title
@@ -19,6 +20,7 @@ class Game(models.Model):
     poster = models.FileField(upload_to='')
     developer = models.CharField(max_length=50)
     publisher = models.CharField(max_length=50)
+    carousel_image = models.FileField(upload_to='', null=True)
 
     def __str__(self):
         return self.title
@@ -28,6 +30,7 @@ class Show(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
     poster = models.FileField(upload_to='')
+    carousel_image = models.FileField(upload_to='', null=True)
 
     def __str__(self):
         return self.title
