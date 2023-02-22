@@ -4,7 +4,47 @@
 <div id="moviesCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     {% for movie in movies %}
-    <div class="container carousel-item {% if forloop.first %} active {% endif %}">
+    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+      <img src="{{ movie.carousel_image.url }}" class="d-block w-100 poster" alt="...">
+    </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#moviesCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#moviesCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Games carousel -->
+<div id="gamesCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for game in games %}
+    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+      <img src="{{ game.carousel_image.url }}" class="d-block w-100 poster" alt="...">
+    </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#gamesCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#gamesCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Shows carousel -->
+<div id="moviesCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for movie in movies %}
+    <div class="carousel-item {% if forloop.first %} active {% endif %}">
       <img src="{{ movie.carousel_image.url }}" class="d-block w-100 poster" alt="...">
     </div>
     {% endfor %}

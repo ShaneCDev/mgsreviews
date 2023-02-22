@@ -46,11 +46,15 @@ class Review(models.Model):
         (4, 4),
         (5, 5)
     )
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
     stars = models.IntegerField(choices=scores)
     comment = models.TextField(max_length=4000)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
     show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
 
+    class Meta:
+        ordering = ['created_on']
+
     def __str__(self):
-        return self.MGS.title
+        return f'Review {self.comment} by {self.author}'

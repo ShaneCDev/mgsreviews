@@ -20,11 +20,14 @@ body {
     color: #0000FF;
 }
 
-.poster {
-    width: 320px;
-    height: 625px; 
-    object-fit: cover;
+.poster { 
+    object-fit: contain;
 } 
+
+#gamesCarousel {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
 
 /* .carousel-item {
     height: 400px;
