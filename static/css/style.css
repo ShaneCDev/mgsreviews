@@ -29,6 +29,12 @@ body {
     margin-bottom: 35px;
 }
 
+.poster-contain {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+}
+
 /* .carousel-item {
     height: 400px;
     width: 100%;

@@ -9,20 +9,22 @@
 
             <div class="col-md-7">
                 <h3>{{ movie.title }}</h3>
+                <h4>Directed by: <strong>{{ movie.director }}</strong></h4>
                 <p>
                     {{ movie.description }}
                 </p>
             </div>
             <div class="col-md-5">
-                <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="featurette-image image-responsive">
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="featurette-image image-responsive poster-contain">
             </div>
 
         {% else %}
             <div class="col-md-5">
-                <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="featurette-image image-responsive">
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="featurette-image image-responsive poster-contain">
             </div>
             <div class="col-md-7">
                 <h3>{{ movie.title }}</h3>
+                <h4>Directed by: <strong>{{ movie.director }}</strong></h4>
                 <p>
                     {{ movie.description }}
                 </p>
