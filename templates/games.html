@@ -7,20 +7,22 @@
             {% if forloop.index|divisibleby:2 != 0 %}
                 <div class="col-md-7">
                     <h3>{{ game.title }}</h3>
+                    <h4>Developed by: <strong>{{ game.developer }}</strong> | Published by: <strong>{{ game.publisher }}</strong></h4>
                     <p>
                         {{ game.description }}
                     </p>
                 </div>
                 <div class="col-md-5">
-                    <img src="{{ game.poster.url }}" alt="{{ game.title }}">
+                    <img src="{{ game.poster.url }}" alt="{{ game.title }}" class="poster-contain">
                 </div>
         </div>
             {% else %}
                 <div class="col-md-5">
-                    <img src="{{ game.poster.url }}" alt="{{ game.title }}">
+                    <img src="{{ game.poster.url }}" alt="{{ game.title }}" class="poster-contain">
                 </div>
                 <div class="col-md-7">
                     <h3>{{ game.title }}</h3>
+                    <h4>Developed by: <strong>{{ game.developer }}</strong> | Published by: <strong>{{ game.publisher }}</strong></h4>
                     <p>
                         {{ game.description }}
                     </p>
