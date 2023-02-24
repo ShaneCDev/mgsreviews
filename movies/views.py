@@ -17,8 +17,10 @@ def home(request):
 
 def movies(request):
     movies = Movie.objects.all()
+    reviews = Review.objects.all()
     context = {
-        'movies': movies
+        'movies': movies,
+        'reviews': reviews
     }
     return render(request, 'movies.html', context)
 

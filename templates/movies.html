@@ -13,6 +13,14 @@
                 <p>
                     {{ movie.description }}
                 </p>
+                <hr>
+                <h4>Reviews:</h4>
+                {% for review in reviews %}
+                <span>Score: {{ review.stars }} / 5</span>
+                <p>
+                    {{ review.comment }}
+                </p>
+                {% endfor %}
             </div>
             <div class="col-md-5">
                 <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="featurette-image image-responsive poster-contain">
@@ -28,6 +36,14 @@
                 <p>
                     {{ movie.description }}
                 </p>
+                <hr>
+                <h4>Reviews:</h4>
+                {% for review in reviews %}
+                <span>Score: {{ review.stars }} / 5</span>
+                <p>
+                    {{ review.comment }}
+                </p>
+                {% endfor %}
             </div>
         {% endif %}
     </div>
