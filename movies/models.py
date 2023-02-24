@@ -49,7 +49,7 @@ class Review(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     stars = models.IntegerField(choices=scores)
     comment = models.TextField(max_length=4000)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, blank=True)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True, blank=True)
     show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True, blank=True)
 
