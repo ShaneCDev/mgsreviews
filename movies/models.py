@@ -44,14 +44,19 @@ class Review(models.Model):
         (2, 2),
         (3, 3),
         (4, 4),
-        (5, 5)
+        (5, 5),
+        (6, 6),
+        (7, 7),
+        (8, 8),
+        (9, 9),
+        (10, 10)
     )
     created_on = models.DateTimeField(auto_now_add=True, null=True)
     stars = models.IntegerField(choices=scores)
     comment = models.TextField(max_length=4000)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True, blank=True)
-    show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True, blank=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
+    show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
 
     class Meta:
         ordering = ['created_on']
