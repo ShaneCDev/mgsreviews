@@ -9,6 +9,9 @@ class Movie(models.Model):
     poster = models.FileField(upload_to='')
     director = models.CharField(max_length=50)
     carousel_image = models.FileField(upload_to='', null=True)
+    cast = models.CharField(max_length=100, null=True)
+    writer = models.CharField(max_length=50, null=True)
+    genre = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.title
@@ -21,6 +24,9 @@ class Game(models.Model):
     developer = models.CharField(max_length=50)
     publisher = models.CharField(max_length=50)
     carousel_image = models.FileField(upload_to='', null=True)
+    cast = models.CharField(max_length=100, null=True)
+    writer = models.CharField(max_length=50, null=True)
+    genre = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.title
@@ -31,6 +37,9 @@ class Show(models.Model):
     description = models.CharField(max_length=50)
     poster = models.FileField(upload_to='')
     carousel_image = models.FileField(upload_to='', null=True)
+    cast = models.CharField(max_length=100, null=True)
+    writer = models.CharField(max_length=50, null=True)
+    genre = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.title

@@ -5,8 +5,19 @@
   <div class="carousel-inner">
     {% for movie in movies %}
     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-      <img src="{{ movie.carousel_image.url }}" class="d-block w-100 poster" alt="...">
+      <img src="{{ movie.poster.url }}" class="d-block w-100 poster" alt="..." height="500" width="500">
+      <div class="row featurette flex-center">
+        <div class="col-md-7">
+            <h3>{{ movie.title }}</h3>
+            <h4>Directed by: <strong>{{ movie.director }}</strong></h4>
+            <p>
+                <strong>Synopsis:</strong>
+                {{ movie.description }}
+            </p>
+        </div>
     </div>
+    
+</div>
     {% endfor %}
   </div>
 

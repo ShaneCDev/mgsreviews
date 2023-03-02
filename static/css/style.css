@@ -1,5 +1,6 @@
 body {
-    background-color: #FAF0E6;
+    background-color: black;
+    color: white;
 }
 
 .brand {
@@ -33,6 +34,12 @@ body {
     height: auto;
     width: 100%;
     object-fit: contain;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .carousel-item {
