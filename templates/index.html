@@ -31,13 +31,24 @@
   </button>
 </div>
 
-<!-- Games carousel -->
+
 <div id="gamesCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     {% for game in games %}
     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-      <img src="{{ game.carousel_image.url }}" class="d-block w-100 poster" alt="...">
+      <img src="{{ game.poster.url }}" class="d-block w-100 poster" alt="..." height="500" width="500">
+      <div class="row featurette flex-center">
+        <div class="col-md-7">
+            <h3>{{ game.title }}</h3>
+            <h4>Developed by: <strong>{{ game.developer }}</strong></h4>
+            <p>
+                <strong>Synopsis:</strong>
+                {{ game.description }}
+            </p>
+        </div>
     </div>
+    
+</div>
     {% endfor %}
   </div>
 
@@ -51,23 +62,33 @@
   </button>
 </div>
 
-<!-- Shows carousel -->
-<div id="moviesCarousel" class="carousel slide" data-bs-ride="carousel">
+
+<div id="showsCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    {% for movie in movies %}
+    {% for show in shows %}
     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-      <img src="{{ movie.carousel_image.url }}" class="d-block w-100 poster" alt="...">
+      <img src="{{ show.poster.url }}" class="d-block w-100 poster" alt="..." height="500" width="500">
+      <div class="row featurette flex-center">
+        <div class="col-md-7">
+            <h3>{{ show.title }}</h3>
+            <h4>Created by: <strong>{{ show.writer }}</strong></h4>
+            <p>
+                <strong>Synopsis:</strong>
+                {{ show.description }}
+            </p>
+        </div>
     </div>
+    
+</div>
     {% endfor %}
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#moviesCarousel" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#showsCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#moviesCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#showsCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-{% endblock %}
