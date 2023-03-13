@@ -8,7 +8,6 @@ class Movie(models.Model):
     description = models.TextField(max_length=3000)
     poster = models.FileField(upload_to='')
     director = models.CharField(max_length=50)
-    carousel_image = models.FileField(upload_to='', null=True)
     cast = models.CharField(max_length=100, null=True)
     writer = models.CharField(max_length=50, null=True)
     genre = models.CharField(max_length=100, null=True)
@@ -23,7 +22,6 @@ class Game(models.Model):
     poster = models.FileField(upload_to='')
     developer = models.CharField(max_length=50)
     publisher = models.CharField(max_length=50)
-    carousel_image = models.FileField(upload_to='', null=True)
     cast = models.CharField(max_length=100, null=True)
     writer = models.CharField(max_length=50, null=True)
     genre = models.CharField(max_length=100, null=True)
@@ -35,9 +33,8 @@ class Game(models.Model):
 
 class Show(models.Model):
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=50)
+    description = models.TextField(max_length=3000)
     poster = models.FileField(upload_to='')
-    carousel_image = models.FileField(upload_to='', null=True)
     cast = models.CharField(max_length=100, null=True)
     writer = models.CharField(max_length=50, null=True)
     genre = models.CharField(max_length=100, null=True)
@@ -47,7 +44,7 @@ class Show(models.Model):
 
 
 class Review(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='movie_reviews')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviewer')
     review_date = models.DateTimeField(default=timezone.now)
     scores = (
         (1, 1),

@@ -2,15 +2,22 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            {{ movie.title }}
+    <div class="row featurette">
+        <div class="col-md-5">
+            <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="poster-contain">
+        </div>
+        <div class="col-md-7">
+            <h3>{{ movie.title }}</h3>
+            <h4>Directed by: <strong>{{ movie.director }}</strong></h4>
+            <h4>Written by: {{ movie.writer }}</h4>
+            <h5>Starring: {{ movie.cast }}</h5>
+            <h5>Genres: {{ movie.genre }}</h5>
             <p>
+                <strong>Synopsis:</strong>
                 {{ movie.description }}
             </p>
+            <hr>
         </div>
     </div>
-</div>
 
 {% endblock %}

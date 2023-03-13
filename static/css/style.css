@@ -31,15 +31,21 @@ body {
 }
 
 .poster-contain {
-    height: auto;
-    width: 100%;
     object-fit: contain;
+    height: 240px;
+    width: 240px;
 }
 
 .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
 }
 
 /* .carousel-item {
