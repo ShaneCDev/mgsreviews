@@ -4,7 +4,7 @@
 
     <div class="row featurette">
         <div class="col-md-5">
-            <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="poster-contain">
+            <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="img-fluid">
         </div>
         <div class="col-md-7">
             <h3>{{ movie.title }}</h3>
@@ -17,7 +17,27 @@
                 {{ movie.description }}
             </p>
             <hr>
+            <div class="container">
+                {% for review in movie.reviews.all %}
+                <div class="row">
+                    <p>Author: <span class="author">{{ review.author }}</span></p> 
+                    <p>
+                        {{ review.comment }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
+
+    <!-- <div class="row featurette">
+        <div class="col-md-7">
+            {% for review in movie.reviews.all %}
+            <p>
+                {{ review.comment }}
+            </p>
+            {% endfor %}
+        </div>
+    </div> -->
 
 {% endblock %}
