@@ -17,10 +17,8 @@ def home(request):
 
 def movies(request):
     movies = Movie.objects.all()
-    reviews = Review.objects.all()
     context = {
-        'movies': movies,
-        'reviews': reviews
+        'movies': movies
     }
     return render(request, 'movies.html', context)
 
@@ -63,3 +61,11 @@ def show_detail(request, id):
         'show': show
     }
     return render(request, 'show_detail.html', context)
+
+
+def review(request):
+    form = ReviewForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'review.html', context)
