@@ -3,7 +3,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <h3 class="flex-center">Leave a review:</h3>
-<p class="flex-center">Posting as: {{ user.username }}</p>
+<h5 class="flex-center">Posting as: {{ user.username }}</h5>
 <div class="container flex-center">
     <form method="post" class="form-group">
             {{ form | crispy }}
