@@ -64,6 +64,8 @@ class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
     show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
+    media_type = models.CharField(max_length=10, null=True, default=None)
+    media_id = models.PositiveIntegerField(null=True, default=None)
 
     class Meta:
         ordering = ['created_on']

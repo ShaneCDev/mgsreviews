@@ -17,19 +17,23 @@
             </p>
             <hr>
             <div class="container">
-                {% for review in movie.reviews.all %}
+                {% for review in reviews %}
                 <div class="row">
                     <p>Author: <span class="author">{{ review.author }}</span></p> 
                     <p>
                         {{ review.comment }}
                     </p>
+                </div>
+                {% empty %}
+                <div class="row">
+                    <p>No reviews for this {{ media_type }} yet.</p>
+                </div>
+                {% endfor %}
                     {% if user.is_authenticated %}
                     <!-- add a second argument to the url and in the view
                     to make sure it leaves a review for the relevant media -->
-                    <a href="{% url 'review'%}" class="btn btn-success">Leave A Review!</a>
+                    <a href="{% url 'review' media_type='movie' media_id=movie.id %}" class="btn btn-success">Leave A Review!</a>
                     {% endif %}
-                </div>
-                {% endfor %}
             </div>
         </div>
     </div>
