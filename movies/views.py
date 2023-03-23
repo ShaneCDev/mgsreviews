@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import Http404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.http import Http404, HttpResponseRedirect
 from .models import Movie, Game, Show, Review
 from .forms import ReviewForm
 
@@ -73,6 +73,7 @@ def show_detail(request, id):
 def review(request, media_type, media_id):
     if media_type == 'movie':
         media = Movie.objects.get(id=media_id)
+        rev_url = 'movie_detail/'
     elif media_type == 'game':
         media = Game.objects.get(id=media_id)
     elif media_type == 'show':
@@ -81,21 +82,22 @@ def review(request, media_type, media_id):
         raise Http404
 
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST, initial={'author': request.user})
         if form.is_valid():
             review = form.save(commit=False)
-            review.author = request.user
             review.media_type = media_type
             review.media_id = media_id
             if review.media_type == 'movie':
                 review.movie = media
+                print(media)
             elif review.media_type == 'game':
                 review.game = media
             elif review.media_type == 'show':
                 review.show = media
             review.save()
+            return HttpResponseRedirect(reverse(movie_detail, media_id))
     else:
-        form = ReviewForm()
+        form = ReviewForm(initial={'author': request.user})
 
     context = {
         'form': form
