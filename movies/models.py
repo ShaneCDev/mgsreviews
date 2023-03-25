@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Movie(models.Model):
     title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True, null=True)
     description = models.TextField(max_length=3000)
     poster = models.FileField(upload_to='')
     director = models.CharField(max_length=50)
@@ -18,6 +19,7 @@ class Movie(models.Model):
 
 class Game(models.Model):
     title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True, null=True)
     description = models.TextField(max_length=3000)
     poster = models.FileField(upload_to='')
     developer = models.CharField(max_length=50)
@@ -33,6 +35,7 @@ class Game(models.Model):
 
 class Show(models.Model):
     title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True, null=True)
     description = models.TextField(max_length=3000)
     poster = models.FileField(upload_to='')
     cast = models.CharField(max_length=100, null=True)

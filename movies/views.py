@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.http import Http404, HttpResponseRedirect
 from .models import Movie, Game, Show, Review
 from .forms import ReviewForm
+from django.shortcuts import resolve_url
 
 
 def home(request):
@@ -40,8 +41,8 @@ def shows(request):
     return render(request, 'shows.html', context)
 
 
-def movie_detail(request, id):
-    movie = get_object_or_404(Movie, id=id)
+def movie_detail(request, slug):
+    movie = get_object_or_404(Movie, slug=slug)
     reviews = Review.objects.filter(movie=movie)
     context = {
         'movie': movie,
@@ -70,32 +71,20 @@ def show_detail(request, id):
     return render(request, 'show_detail.html', context)
 
 
-def review(request, media_type, media_id):
+def review(request, slug, media_type):
     if media_type == 'movie':
-        media = Movie.objects.get(id=media_id)
-        rev_url = 'movie_detail/'
-    elif media_type == 'game':
-        media = Game.objects.get(id=media_id)
-    elif media_type == 'show':
-        media = Show.objects.get(id=media_id)
-    else:
-        raise Http404
+        media = get_object_or_404(Movie, slug=slug)
 
     if request.method == 'POST':
         form = ReviewForm(request.POST, initial={'author': request.user})
         if form.is_valid():
             review = form.save(commit=False)
-            review.media_type = media_type
-            review.media_id = media_id
-            if review.media_type == 'movie':
+            review.media_type = media.media_type
+            review.media_id = media.pk
+
+            if media.media_type == 'movie':
                 review.movie = media
-                print(media)
-            elif review.media_type == 'game':
-                review.game = media
-            elif review.media_type == 'show':
-                review.show = media
-            review.save()
-            return HttpResponseRedirect(reverse(movie_detail, media_id))
+            review.save()         
     else:
         form = ReviewForm(initial={'author': request.user})
 
