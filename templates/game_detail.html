@@ -25,6 +25,9 @@
                     {{ review.comment }}
                 </p>
             </div>
+            {% if user == review.author %}
+                <a href="{% url 'edit_review' media_type='game' slug=game.slug id=review.id%}" class="btn btn-warning">Edit</a>
+            {% endif %}
             {% empty %}
             <div class="row">
                 <p>No reviews for this game yet.</p>

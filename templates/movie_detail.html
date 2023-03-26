@@ -24,6 +24,9 @@
                         {{ review.comment }}
                     </p>
                 </div>
+                {% if user == review.author %}
+                    <a href="{% url 'edit_review' media_type='movie' slug=movie.slug id=review.id%}" class="btn btn-warning">Edit</a>
+                {% endif %}
                 {% empty %}
                 <div class="row">
                     <p>No reviews for this movie yet.</p>

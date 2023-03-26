@@ -103,3 +103,27 @@ def review(request, slug, media_type):
         'form': form
     }
     return render(request, 'review.html', context)
+
+
+def edit_review(request, media_type, slug, id):
+    if media_type == 'movie':
+        media = get_object_or_404(Movie, slug=slug)
+        rev_url = 'movie_detail'
+    elif media_type == 'game':
+        media = get_object_or_404(Game, slug=slug)
+        rev_url = 'game_detail'
+    elif media_type == 'show':
+        media = get_object_or_404(Show, slug=slug)
+        rev_url = 'show_detail'
+
+    review = get_object_or_404(Review, id=id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse(rev_url, kwargs={'slug': media.slug}))
+    form = ReviewForm(instance=review)
+    context = {
+        'form': form
+    }
+    return render(request, 'edit_review.html', context)

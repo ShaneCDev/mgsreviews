@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h3 class="flex-center">Leave a review:</h3>
+<h5 class="flex-center">Posting as: {{ user.username }}</h5>
+<div class="container flex-center">
+    <form method="post" class="form-group">
+            {{ form | crispy }}
+            {% csrf_token %}
+        <button type="submit" class="btn btn-success btn-lg" style="margin-top: 15px;">Submit</button>
+    </form>
+</div>
+{% endblock %}
