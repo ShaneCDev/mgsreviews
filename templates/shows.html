@@ -33,7 +33,7 @@
             {% for show in shows %}
             <div class="col-lg-3 col-md-6">
                 <div class="img-container">
-                    <a href="{% url 'show_detail' show.id %}">
+                    <a href="{% url 'show_detail' show.slug %}">
                         <img src="{{ show.poster.url }}" alt="{{ show.title }}" class="poster-contain">
                     </a>
                 </div>

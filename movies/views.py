@@ -61,12 +61,12 @@ def game_detail(request, slug):
     return render(request, 'game_detail.html', context)
 
 
-def show_detail(request, id):
-    show = Show.objects.get(id=id)
+def show_detail(request, slug):
+    show = get_object_or_404(Show, slug=slug)
+    reviews = Review.objects.filter(show=show)
     context = {
         'show': show,
-        'media_type': 'show',
-        'media_id': id,
+        'reviews': reviews,
     }
     return render(request, 'show_detail.html', context)
 
@@ -78,6 +78,10 @@ def review(request, slug, media_type):
     elif media_type == 'game':
         media = get_object_or_404(Game, slug=slug)
         rev_url = 'game_detail'
+    elif media_type == 'show':
+        media = get_object_or_404(Show, slug=slug)
+        rev_url = 'show_detail'
+
     if request.method == 'POST':
         form = ReviewForm(request.POST, initial={'author': request.user})
         if form.is_valid():
@@ -88,8 +92,10 @@ def review(request, slug, media_type):
                 review.movie = media
             elif media_type == 'game':
                 review.game = media
+            elif media_type == 'show':
+                review.show = media
             review.save()
-            return HttpResponseRedirect(reverse(rev_url, kwargs={'slug':media.slug}))
+            return HttpResponseRedirect(reverse(rev_url, kwargs={'slug': media.slug}))
     else:
         form = ReviewForm(initial={'author': request.user})
 
