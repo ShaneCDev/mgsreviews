@@ -46,6 +46,7 @@ body {
 .img-container {
     display: flex;
     justify-content: center;
+    margin-top: 25px;
     margin-bottom: 25px;
 }
 
