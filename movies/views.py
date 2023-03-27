@@ -81,7 +81,7 @@ def game_detail(request, slug):
             'game': game,
             'reviews': reviews,
             'reviewed': reviewed,
-        }       
+        }
     return render(request, 'game_detail.html', context)
 
 

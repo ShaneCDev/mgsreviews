@@ -29,7 +29,7 @@
                     </div>
                     {% if user == review.author %}
                     <a href="{% url 'edit_review' media_type='show' slug=show.slug id=review.id %}"
-                        class="btn btn-primary w-25" style="margin-left: 15px;">Edit</a>
+                        class="btn btn-primary w-25" style="margin-left: 15px; margin-bottom: 5px;">Edit</a>
                     {% endif %}
                 </div>
             </div>
