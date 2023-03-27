@@ -3,6 +3,7 @@ from django.http import Http404, HttpResponseRedirect
 from .models import Movie, Game, Show, Review
 from .forms import ReviewForm
 from django.shortcuts import resolve_url
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def home(request):
@@ -44,10 +45,20 @@ def shows(request):
 def movie_detail(request, slug):
     movie = get_object_or_404(Movie, slug=slug)
     reviews = Review.objects.filter(movie=movie)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(reviews, 3)
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     if request.user.is_anonymous:
         context = {
             'movie': movie,
             'reviews': reviews,
+            'posts': posts,
         }
     else:
         already_reviewed = reviews.filter(author=request.user)
@@ -59,6 +70,7 @@ def movie_detail(request, slug):
             'movie': movie,
             'reviews': reviews,
             'reviewed': reviewed,
+            'posts': posts,
         }
     return render(request, 'movie_detail.html', context)
 
