@@ -51,10 +51,14 @@ body {
 }
 
 .author {
-    color: white;
+    color: black;
     margin: 4px;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.text-color {
+    color: black;
 }
 
 /* .carousel-item {

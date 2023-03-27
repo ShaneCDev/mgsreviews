@@ -44,30 +44,66 @@ def shows(request):
 def movie_detail(request, slug):
     movie = get_object_or_404(Movie, slug=slug)
     reviews = Review.objects.filter(movie=movie)
-    context = {
-        'movie': movie,
-        'reviews': reviews,
-    }
+    if request.user.is_anonymous:
+        context = {
+            'movie': movie,
+            'reviews': reviews,
+        }
+    else:
+        already_reviewed = reviews.filter(author=request.user)
+        if already_reviewed:
+            reviewed = True
+        else:
+            reviewed = False
+        context = {
+            'movie': movie,
+            'reviews': reviews,
+            'reviewed': reviewed,
+        }
     return render(request, 'movie_detail.html', context)
 
 
 def game_detail(request, slug):
     game = get_object_or_404(Game, slug=slug)
     reviews = Review.objects.filter(game=game)
-    context = {
-        'game': game,
-        'reviews': reviews,
-    }
+    if request.user.is_anonymous:
+        context = {
+            'game': game,
+            'reviews': reviews,
+        }
+    else:
+        already_reviewed = reviews.filter(author=request.user)
+        if already_reviewed:
+            reviewed = True
+        else:
+            reviewed = False
+        context = {
+            'game': game,
+            'reviews': reviews,
+            'reviewed': reviewed,
+        }       
     return render(request, 'game_detail.html', context)
 
 
 def show_detail(request, slug):
     show = get_object_or_404(Show, slug=slug)
     reviews = Review.objects.filter(show=show)
-    context = {
-        'show': show,
-        'reviews': reviews,
-    }
+    if request.user.is_anonymous:
+        context = {
+            'show': show,
+            'reviews': reviews,
+        }
+    else:
+        already_reviewed = reviews.filter(author=request.user)
+        if already_reviewed:
+            reviewed = True
+        else:
+            reviewed = False
+        context = {
+            'show': show,
+            'reviews': reviews,
+            'reviewed': reviewed,
+        }
     return render(request, 'show_detail.html', context)
 
 
@@ -100,7 +136,7 @@ def review(request, slug, media_type):
         form = ReviewForm(initial={'author': request.user})
 
     context = {
-        'form': form
+        'form': form,
     }
     return render(request, 'review.html', context)
 

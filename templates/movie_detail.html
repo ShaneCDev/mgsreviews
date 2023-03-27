@@ -1,54 +1,47 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block content %}
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="img-fluid">
-        </div>
-        <div class="col-md-7">
-            <h3>{{ movie.title }}</h3>
-            <h4>Directed by: <strong>{{ movie.director }}</strong></h4>
-            <h4>Written by: {{ movie.writer }}</h4>
-            <h5>Starring: {{ movie.cast }}</h5>
-            <h5>Genres: {{ movie.genre }}</h5>
-            <p>
-                <strong>Synopsis:</strong>
-                {{ movie.description }}
-            </p>
-            <hr>
-            <div class="container">
-                {% for review in reviews %}
-                <div class="row">
-                    <p>Author: <span class="author">{{ review.author }}</span></p> 
-                    <p>
-                        {{ review.comment }}
-                    </p>
-                </div>
-                {% if user == review.author %}
-                    <a href="{% url 'edit_review' media_type='movie' slug=movie.slug id=review.id%}" class="btn btn-warning">Edit</a>
-                {% endif %}
-                {% empty %}
-                <div class="row">
-                    <p>No reviews for this movie yet.</p>
-                </div>
-                {% endfor %}
-                    {% if user.is_authenticated %}
-                    <!-- add a second argument to the url and in the view
-                    to make sure it leaves a review for the relevant media -->
-                    <a href="{% url 'review' media_type='movie' slug=movie.slug %}" class="btn btn-success">Leave A Review!</a>
+<div class="row featurette">
+    <div class="col-md-5">
+        <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="img-fluid w-100">
+    </div>
+    <div class="col-md-7">
+        <h3>{{ movie.title }}</h3>
+        <h4>Directed by: <strong>{{ movie.director }}</strong></h4>
+        <h4>Written by: {{ movie.writer }}</h4>
+        <h5>Starring: {{ movie.cast }}</h5>
+        <h5>Genres: {{ movie.genre }}</h5>
+        <p>
+            <strong>Synopsis:</strong>
+            {{ movie.description }}
+        </p>
+        <hr>
+        <div class="container">
+            {% for review in reviews %}
+            <div class="flex-center">
+                <div class="card text-bg-light mb-3 w-100">
+                    <div class="card-header text-color">Author: <span class="author">{{ review.author }}</span> <span>- Score {{ review.stars }}/10</span></div>
+                    <div class="card-body">
+                        <h5 class="card-title text-color">Review for {{ movie.title }}</h5>
+                        <p class="card-text text-color">{{ review.comment }}</p>
+                    </div>
+                    {% if user == review.author %}
+                    <a href="{% url 'edit_review' media_type='movie' slug=movie.slug id=review.id %}" class="btn btn-primary w-25" style="margin-left: 15px;">Edit</a>
                     {% endif %}
+                </div>
             </div>
+            {% empty %}
+            <div class="row">
+                <p>No reviews for this movie yet.</p>
+            </div>
+            {% endfor %}
+            {% if reviewed %}
+                <a href="{% url 'review' media_type='movie' slug=movie.slug %}" class="btn btn-success" style="display: none;">Leave A Review!</a>
+            {% else %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'review' media_type='movie' slug=movie.slug %}" class="btn btn-success">Leave A Review!</a>
+            {% endif %}
+            {% endif %}
         </div>
     </div>
-
-    <!-- <div class="row featurette">
-        <div class="col-md-7">
-            {% for review in movie.reviews.all %}
-            <p>
-                {{ review.comment }}
-            </p>
-            {% endfor %}
-        </div>
-    </div> -->
-
 {% endblock %}
