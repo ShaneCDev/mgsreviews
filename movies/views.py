@@ -44,33 +44,33 @@ def shows(request):
 
 def movie_detail(request, slug):
     movie = get_object_or_404(Movie, slug=slug)
-    reviews = Review.objects.filter(movie=movie)
-    page = request.GET.get('page', 1)
-    paginator = Paginator(reviews, 3)
+    all_reviews = Review.objects.filter(movie=movie)
+    paginator = Paginator(all_reviews, 3)
+    page = request.GET.get('page')
 
     try:
-        posts = paginator.page(page)
+        reviews = paginator.page(page)
     except PageNotAnInteger:
-        posts = paginator.page(1)
+        reviews = paginator.page(1)
     except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
+        reviews = paginator.page(paginator.num_pages)
     if request.user.is_anonymous:
         context = {
             'movie': movie,
+            'all_reviews': all_reviews,
             'reviews': reviews,
-            'posts': posts,
         }
     else:
-        already_reviewed = reviews.filter(author=request.user)
+        already_reviewed = all_reviews.filter(author=request.user)
         if already_reviewed:
             reviewed = True
         else:
             reviewed = False
         context = {
             'movie': movie,
-            'reviews': reviews,
+            'all_reviews': all_reviews,
             'reviewed': reviewed,
-            'posts': posts,
+            'reviews': reviews,
         }
     return render(request, 'movie_detail.html', context)
 
