@@ -54,6 +54,7 @@ def movie_detail(request, slug):
         reviews = paginator.page(1)
     except EmptyPage:
         reviews = paginator.page(paginator.num_pages)
+
     if request.user.is_anonymous:
         context = {
             'movie': movie,
@@ -77,20 +78,32 @@ def movie_detail(request, slug):
 
 def game_detail(request, slug):
     game = get_object_or_404(Game, slug=slug)
-    reviews = Review.objects.filter(game=game)
+    all_reviews = Review.objects.filter(game=game)
+    paginator = Paginator(all_reviews, 3)
+    page = request.GET.get('page')
+
+    try:
+        reviews = paginator.page(page)
+    except PageNotAnInteger:
+        reviews = paginator.page(1)
+    except EmptyPage:
+        reviews = paginator.page(paginator.num_pages)
+
     if request.user.is_anonymous:
         context = {
             'game': game,
+            'all_reviews': all_reviews,
             'reviews': reviews,
         }
     else:
-        already_reviewed = reviews.filter(author=request.user)
+        already_reviewed = all_reviews.filter(author=request.user)
         if already_reviewed:
             reviewed = True
         else:
             reviewed = False
         context = {
             'game': game,
+            'all_reviews': all_reviews,
             'reviews': reviews,
             'reviewed': reviewed,
         }
@@ -99,20 +112,32 @@ def game_detail(request, slug):
 
 def show_detail(request, slug):
     show = get_object_or_404(Show, slug=slug)
-    reviews = Review.objects.filter(show=show)
+    all_reviews = Review.objects.filter(show=show)
+    paginator = Paginator(all_reviews, 3)
+    page = request.GET.get('page')
+
+    try:
+        reviews = paginator.page(page)
+    except PageNotAnInteger:
+        reviews = paginator.page(1)
+    except EmptyPage:
+        reviews = paginator.page(paginator.num_pages)
+
     if request.user.is_anonymous:
         context = {
             'show': show,
+            'all_reviews': all_reviews,
             'reviews': reviews,
         }
     else:
-        already_reviewed = reviews.filter(author=request.user)
+        already_reviewed = all_reviews.filter(author=request.user)
         if already_reviewed:
             reviewed = True
         else:
             reviewed = False
         context = {
             'show': show,
+            'all_reviews': all_reviews,
             'reviews': reviews,
             'reviewed': reviewed,
         }
