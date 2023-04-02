@@ -38,7 +38,9 @@
   <div class="carousel-inner">
     {% for game in games %}
     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-      <img src="{{ game.poster.url }}" class="d-block w-100 poster" alt="{{ game.title }}" height="500" width="500">
+      <a href="{% url 'game_detail' game.slug %}">
+        <img src="{{ game.poster.url }}" class="d-block w-100 poster" alt="{{ game.title }}" height="500" width="500">
+      </a>
       <div class="row featurette flex-center">
         <div class="col-md-7">
             <h3>{{ game.title }}</h3>
@@ -69,7 +71,9 @@
   <div class="carousel-inner">
     {% for show in shows %}
     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-      <img src="{{ show.poster.url }}" class="d-block w-100 poster" alt="{{ show.title }}" height="500" width="500">
+      <a href="{% url 'show_detail' show.slug %}">
+        <img src="{{ show.poster.url }}" class="d-block w-100 poster" alt="{{ show.title }}" height="500" width="500">
+      </a>
       <div class="row featurette flex-center">
         <div class="col-md-7">
             <h3>{{ show.title }}</h3>
