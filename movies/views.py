@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
-from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, reverse
+from django.http import HttpResponseRedirect
 from .models import Movie, Game, Show, Review
 from .forms import ReviewForm
-from django.shortcuts import resolve_url
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 

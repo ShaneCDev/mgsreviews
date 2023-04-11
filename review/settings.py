@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['reddjango.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['reddjango.herokuapp.com', '8000-shanecdev-reddango-j8e2vt5kyj.us2.codeanyapp.com']
 
 
 # Application definition
