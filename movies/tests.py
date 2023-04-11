@@ -35,4 +35,3 @@ class TestModels(TestCase):
         self.assertTrue(isinstance(movie, Movie))
         self.assertEqual(movie.__str__, movie.title)
 
-# need to add more tests
