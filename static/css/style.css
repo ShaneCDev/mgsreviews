@@ -61,33 +61,6 @@ body {
     color: black;
 }
 
-/* .carousel-item {
-    height: 400px;
-    width: 100%;
-    text-align: center;
-} */
-
-/* #moviesCarousel, .carousel-item img {
-    object-fit: cover;
-    object-position: center;
-    height: 100vh;
-    overflow: hidden;
-} */
-
-/* .carousel-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 300px;
-} */
-
-/* .d-block, .w-100 {
-    width: 100%;
-    height: 550px;
-    object-fit: cover;
-    object-position: 50% 50%;
-} */
-
 footer {
     background-color: #708090;
 }
