@@ -1,8 +1,8 @@
 # MGSR - Movies, Games, Shows Reviews
 
 This is an extension of a website I made for my first project and it's a review website for anyone that loves Movies, Games, TV Shows and want to express how they feel about said media. The main purpose is to get some healthy non-toxic reviews and perspectives about media that we all know and love and even some that we don't know nor love, if theres something that you haven't seen or played and are abit skeptical about it then feel free to read the reviews and go from there!
-![AmIResponsive](insert link here)
-The website can be viewed here. ![MGSR](insert link here)
+![AmIResponsive](/assets/readmeimgs/amiresponsive%20image.png)
+The website can be viewed here. [MGSR](https://reddjango.herokuapp.com/)
 
 # Index - Table of Contents
 
@@ -78,7 +78,7 @@ The colour palette is basic enough but I think its clean and nice, it consists o
 ## Existing Features
 
 ## Navigation Bar
-![Navigation Bar](insert images here)
+![Navigation Bar](/assets/readmeimgs/navbar.png)
 - The navigation bar is fixed for this multi-paged website.
 - There is a very simple "MGS | Reviews" logo located to the left of the navigation bar, located slightly to the right of the logo is each page and depending on if the user is logged in or not this will look different. If the user is logged in then the navbar links will be "Home, Movies, Games, Shows, Logout" if they are not logged in then it will be as follows "Home, Movies, Games, Shows, Register, Login".
 - The logo acts as a button also and clicking on it will redirect you back to the home page.
@@ -86,43 +86,43 @@ The colour palette is basic enough but I think its clean and nice, it consists o
 - Upon clicking on any navigation link the website will redirect you to the respective page.
 
 ## Home Page
-![Home Page](insert image here)
+![Home Page](assets/readmeimgs/homepage.png)
 - The home page is made up of three carousels which I think is a nice way of displaying different media.
 - The page is evenly divided into three rows, each image in the carousel is clickable and clicking on any of them will bring the user to the detail page for whatever they clicked on for example if the user clicks on Sekiro they will be brought to the Sekiro detail page.
 
 ## Movies
-![Movies](insert image here)
+![Movies](assets/readmeimgs/moviespage.png)
 - This is the movies page and it is a 4x4 grid of twelve movies posters which are easily recognisable and upon clicking on them the user will be brought to the detail page.
 - This layout is shared across the Games, and Shows pages also to keep things consistent.
 
 ## Movie Detail
-![Movie Detail](insert image here)
+![Movie Detail](assets/readmeimgs/moviesdetail.png)
 - This detail page is also shared across Games, and Shows with some minor details in the data that is displayed to the user.
 - There is also a "Leave A Review" button that will be on this page if the user is logged in and has not yet left a review.
 - If there are no reviews for the movie then "No reviews for this movie yet" will be displayed.
 - If the user has already left a review the review will be displayed here in a little card and at the bottom of the card will be an edit button should they wish to edit their review.
 
 ## Games
-![Games](insert image here)
+![Games](assets/readmeimgs/gamespage.png)
 
 ## Games Detail
-![Games Detail](insert image here)
+![Games Detail](assets/readmeimgs/gamesdetail.png)
 
 ## Shows
-![Shows](insert image here)
+![Shows](assets/readmeimgs/showspage.png)
 
 ## Shows Detail
-![Shows Detail](insert image here)
+![Shows Detail](assets/readmeimgs/showsdetail.png)
 
 ## Review
-![Review](insert image here)
+![Review](assets/readmeimgs/reviewpage.png)
 - This is the page the user will be brought to upon clicking the "Leave A Review" button.
 - This page consists of a form for the user to fill out which upon submitting will redirect them back to the page they just came from and post their review for all users to see.
 - I implemented pagination as to not clutter the page too much so there is only three reviews showing at a time.
 - This design is shared with the "edit review" page. The only difference being is that instead of the form being blank it is already filled out with your review that can be edited to your liking.
 
 ## Edit Review
-![Edit Review](insert image here)
+![Edit Review](assets/readmeimgs/editreviewpage.png)
 
 # Technologies Used
 
@@ -187,15 +187,16 @@ The following was manually tested and resulted in a pass:
 - # Future Implementation
     - I would like to add user profiles so users can assign an avatar to their profile and that can be displayed on their reviews, and they can also edit their account details for example changing username, password, email etc.
     - Add "like" button functionality to reviews and filter reviews based on the most likes.
+    - Add an API (if one exists) that can pull in new Movies, Games and Shows without the admin having to manually enter them via the admin panel.
 
 # Deployment
 The website was deployed using Heroku:
 
-The website can be viewed here. [MGSR](insert link here)
+The website can be viewed here. [MGSR](https://reddjango.herokuapp.com/)
 
 # Credits
 - ## Images
-- All images were taken from [Google Images](https://www.google.ie/imghp?hl=en-GB&tab=ri&ogbl)
+- All images were taken from [Google Images](https://www.google.ie/imghp?hl=en-GB&tab=ri&ogbl).
 - [Am I Responsive](https://ui.dev/amiresponsive) was used to generate the website responsive image used here in the README.md.
 - [Ezgif](https://ezgif.com/) for converting some images from webp to jpg.
 

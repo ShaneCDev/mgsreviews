@@ -17,4 +17,4 @@ class ShowAdmin(admin.ModelAdmin):
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Review)
-admin.site.register(Show, ShowAdmin)#
+admin.site.register(Show, ShowAdmin)

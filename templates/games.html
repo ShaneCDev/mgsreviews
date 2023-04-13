@@ -1,34 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    <!-- {% for game in games %}
-        <div class="row featurette">
-            <div class="col-md-5">
-                <img src="{{ game.poster.url }}" alt="{{ game.title }}" class="featurette-image image-responsive poster-contain">
-            </div>
-            <div class="col-md-7">
-                <h3>{{ game.title }}</h3>
-                <h4>Developed by: <strong>{{ game.developer }}</strong> | Published by: <strong>{{ game.publisher }}</strong></h4>
-                <h4>Written by: {{ game.writer }}</h4>
-                <h5>Starring: {{ game.cast }}</h5>
-                <h5>Genres: {{ game.genre }}</h5>
-                <p>
-                    <strong>Synopsis:</strong>
-                    {{ game.description }}
-                </p>
-                <hr>
-                <h4>Reviews:</h4>
-                {% for review in game.reviews.all %}
-                <span>Score: {{ review.stars }} / 10</span>
-                <p>
-                    {{ review.comment }}
-                </p>
-                {% endfor %}
-            </div>
-        </div>   
-    {% endfor %} -->
-
     <div class="container">
         <div class="row">
             {% for game in games%}
