@@ -1,6 +1,8 @@
 {% extends "base.html" %}
-{% block content %}
 
+{% block title %} MGS | Reviews - {{ movie.title }} {% endblock %}
+
+{% block content %}
 <div class="row featurette">
     <div class="col-md-5">
         <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="img-fluid w-100">
