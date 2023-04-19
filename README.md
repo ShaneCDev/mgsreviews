@@ -56,13 +56,13 @@ site.
 # 4. Skeleton
 ## Wireframes
 The wireframes were made using Balsamiq.
-- [Home](insert image here)
-- [Movies, Games, Shows](insert image here)
-- [Detail Page](insert image here)
-- [Review, Edit Review](insert image here)
-- [Register](insert image here)
-- [Login](insert image here)
-- [Signout](insert image here)
+- [Home](docs/wireframes/homepagewireframe.png)
+- [Movies, Games, Shows](docs/wireframes/mgs%20pages%20wireframes.png)
+- [Detail Page](docs/wireframes/detailpageswireframe.png)
+- [Review, Edit Review](docs/wireframes/reviewwireframe.png)
+- [Register](docs/wireframes/signupwireframe.png)
+- [Login](docs/wireframes/signinwireframe.png)
+- [Signout](docs/wireframes/signoutwireframe.png)
 
 # 5. Surface
 - ## Colour
@@ -175,6 +175,7 @@ The following was manually tested and resulted in a pass:
     - The edit button works as intended as it takes the user to the edit review page and allows them to edit their review and save it as they see fit.
 - ## Review Page
     - Upon submitting the review form the user is redirected back to the page they just came from and their review is there on display.
+    - Users can only leave one review, so there is no double posts instead if they have already left a review they can edit the one they posted.
 - ## Register Page
     - Filling out this form allows users to register an account so that they can leave and edit reviews.
 - ## Sign in Page
@@ -190,7 +191,52 @@ The following was manually tested and resulted in a pass:
     - Add an API (if one exists) that can pull in new Movies, Games and Shows without the admin having to manually enter them via the admin panel.
 
 # Deployment
-The website was deployed using Heroku:
+The website was deployed using Heroku. To deploy to Heroku:
+1. To successfully deploy on Heroku you first need to create a requirements.txt file and a Procfile.
+2. The requirements.txt file contains all the applications and dependencies that are required to run your application. To create this file run the following command in the terminal:
+```bash
+pip3 freeze --local > requirements.txt    
+```
+3. The Procfile lets Heroku know which files run the app and how to run it. Create a `Procfile` in the root directory and add the following to the file (note: you must install gunicorn, you can do this by running this command. `pip3 install gunicorn`):
+```Procfile
+web: gunicorn yourappname.wsgi
+```
+4. Log in to the Heroku CLI in the terminal and run this command to disable collectstatic. (You don't have to do this in the CLI you can go to your config vars via the Heroku Dashboard and add this config var `DISABLE_COLLECTSTATIC 1`):
+```bash
+heroku config:set DISABLE_COLLECTSTATIC=1 --app heroku-app-name-here
+```
+5. We also need to add the Heroku app and localhost to ALLOWED_HOSTS = [] in settings.py:
+```python
+ALLOWED_HOSTS = ['{heroku app URL here}', 'localhost']
+```
+6. Push these changes to GitHub. You can then initialise the Heroku git remote in the terminal and push to Heroku with:
+```bash
+heroku git:remote -a {app name here}
+git push heroku master
+```
+7. You should now be able to see your deployed site (without any static files).
+8. To enable automatic deployments on Heroku, go to the deploy tab and click the connect to GitHub button. Search for your projects repo and then click connect. Click enable automatic deploys at the bottom of the page. Now everytime you push code to GitHub Heroku will take that code and deploy the site again with the updated code you just added.
+9. To enable stylesheets just remove the `DISABLE_COLLECTSTATIC` config var and your site will have all its styling.
+
+### Local Development
+#### How to Fork
+To fork the repo:
+1. Log in to GitHub.
+2. Go to the repo for this project.
+3. Click on the fork button in the top right.
+
+#### How to Clone
+To clone the repo:
+1. Log in to GitHub
+2. Go to the repo for this project.
+3. Click the Code button, select whether you would like to clone with HTTPS, SSH or the GitHub CLI and copy the link given.
+4. Open the terminal in any IDE of your choosing and change the current working directory to the location you would like to use for the cloned repo.
+5. Type the following command into the terminal `git clone` followed by the link you copied in step 3.
+6. Set up a virtual environment.
+7. Install the packages that are required from the requirements.txt file by running the following command in the terminal:
+```bash
+pip3 install -r requirements.txt
+```
 
 The website can be viewed here. [MGSR](https://reddjango.herokuapp.com/)
 

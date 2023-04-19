@@ -40,7 +40,7 @@
             {% if reviewed %}
                 <a href="{% url 'review' media_type='movie' slug=movie.slug %}" class="btn btn-success" style="display: none;">Leave A Review!</a>
             {% elif user.is_authenticated %}
-                <a href="{% url 'review' media_type='movie' slug=movie.slug %}" class="btn btn-success">Leave A Review!</a>
+                <a href="{% url 'review' media_type='movie' slug=movie.slug %}" class="btn btn-success" style="margin-bottom: 15px;">Leave A Review!</a>
             {% endif %}
             
             {% if reviews.has_other_pages %}
