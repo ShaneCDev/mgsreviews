@@ -178,6 +178,7 @@ The following was manually tested and resulted in a pass:
     - Users can only leave one review, so there is no double posts instead if they have already left a review they can edit the one they posted.
 - ## Register Page
     - Filling out this form allows users to register an account so that they can leave and edit reviews.
+    - If a user already exists for example (Shane101) and a new user goes to sign up with the same username (Shane101) there is a message shown saying that a user with that username already exists and the form is not submitted.
 - ## Sign in Page
     - Upon entering in your credentials you will be logged in to the website and an alert message displays letting you know that you logged in successfully.
 - ## Sign out Page
@@ -185,10 +186,10 @@ The following was manually tested and resulted in a pass:
 - ## Footer
     - All social media links open in a new tab.
 ---
-- # Future Implementation
-    - I would like to add user profiles so users can assign an avatar to their profile and that can be displayed on their reviews, and they can also edit their account details for example changing username, password, email etc.
-    - Add "like" button functionality to reviews and filter reviews based on the most likes.
-    - Add an API (if one exists) that can pull in new Movies, Games and Shows without the admin having to manually enter them via the admin panel.
+# Future Implementation
+- I would like to add user profiles so users can assign an avatar to their profile and that can be displayed on their reviews, and they can also edit their account details for example changing username, password, email etc.
+- Add "like" button functionality to reviews and filter reviews based on the most likes.
+- Add an API (if one exists) that can pull in new Movies, Games and Shows without the admin having to manually enter them via the admin panel.
 
 # Deployment
 The website was deployed using Heroku. To deploy to Heroku:
