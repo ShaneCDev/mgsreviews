@@ -29,6 +29,7 @@
                     </div>
                     {% if user == review.author %}
                     <a href="{% url 'edit_review' media_type='movie' slug=movie.slug id=review.id %}" class="btn btn-primary w-25" style="margin-left: 15px; margin-bottom: 5px;">Edit</a>
+                    <a href={% url 'delete_review' review.id %} class="btn btn-danger w-25" style="margin-left: 15px; margin-bottom: 5px;">Delete</a>
                     {% endif %}
                 </div>
             </div>

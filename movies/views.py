@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.http import HttpResponseRedirect
 from .models import Movie, Game, Show, Review
 from .forms import ReviewForm
@@ -199,3 +199,9 @@ def edit_review(request, media_type, slug, id):
         'form': form
     }
     return render(request, 'edit_review.html', context)
+
+
+def delete_review(request, id):
+    review = get_object_or_404(Review, id=id)
+    review.delete()
+    return redirect('/')

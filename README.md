@@ -142,15 +142,23 @@ The colour palette is basic enough but I think its clean and nice, it consists o
 # Testing
 - ## HTML Validator
     At various stages HTML Validation was done.
-    ![HTML Validation](insert image here)
+    - [Home Page HTML Validation](docs/validation/homepage-html-validation.png)
+    - [Detailed Page HTML Validation](docs/validation/detailspage-html-validation.png)
+    - [Movies Page HTML Validation](docs/validation/moviespage-html-validation.png)
+    - [Games Page HTML Validation](docs/validation/gamespage-html-validation.png)
+    - [Shows Page HTML Validation](docs/validation/showspage-html-validation.png)
+    - [Review Page HTML Validation](docs/validation/reviewspage-html-validation.png)
+    - [Signout Page HTML Validation](docs/validation/logout-html-validation.png)
+    - [Signup Page HTML Validation](docs/validation/signup-html-validation.png)
+    - [Login Page HTML Validation](docs/validation/loginpage-html-validation.png)
 
 - ## CSS Validator
     At various stages CSS Validation was done.
-    ![CSS Validation](insert image here)
+    ![CSS Validation](docs/validation/css-validation.png)
 
 - ## Lighthouse
     At various stages Lighthouse testing was done.
-    ![Lighthouse](insert image here)
+    ![Lighthouse](docs/validation/lighthouse.png)
 
 - ## Browser Compatibility
 The website was tested on the following browsers:
