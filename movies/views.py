@@ -203,5 +203,15 @@ def edit_review(request, media_type, slug, id):
 
 def delete_review(request, id):
     review = get_object_or_404(Review, id=id)
+    if review.media_type == 'movie':
+        slug = review.movie.slug
+        rev_url = reverse('movie_detail', kwargs={'slug': slug})
+    elif review.media_type == 'game':
+        slug = review.game.slug
+        rev_url = reverse('game_detail', kwargs={'slug': slug})
+    elif review.media_type == 'show':
+        slug = review.show.slug
+        rev_url = reverse('show_detail', kwargs={'slug': slug})
+    print(rev_url)
     review.delete()
-    return redirect('/')
+    return redirect(rev_url)

@@ -29,12 +29,12 @@
                     </div>
                     {% if user == review.author %}
                     <a href="{% url 'edit_review' media_type='movie' slug=movie.slug id=review.id %}" class="btn btn-primary w-25" style="margin-left: 15px; margin-bottom: 5px;">Edit</a>
-                    <a href="{% url 'delete_review' review.id %}" class="btn btn-danger w-25" style="margin-left: 15px; margin-bottom: 5px;">Delete</a>
+                    <button type="button" class="btn btn-danger w-25" data-bs-toggle="modal" data-bs-target="#modal-{{ review.id }}" style="margin-left: 15px; margin-bottom: 5px;">Delete</button>
                     {% endif %}
                 </div>
             </div>
 
-            {% comment %} <div id="modal-{{ review.id }}" class="modal" tabindex="-1" role="dialog">
+            <div id="modal-{{ review.id }}" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -45,12 +45,12 @@
                       <p style="color: black;">This action cannot be undone.</p>
                     </div>
                     <div class="modal-footer">
-                      <a href="{% url 'delete_review' id=review.id %}" class="btn btn-danger">Delete</button>
+                      <a href="{% url 'delete_review' id=review.id %}" class="btn btn-danger">Delete</a>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
-            </div> {% endcomment %}
+            </div> 
 
 
             {% empty %}
