@@ -181,6 +181,7 @@ The following was manually tested and resulted in a pass:
     - Clicking on the "Leave A Review" button takes the user to a new page with a review form to fill out and upon submitting the review is saved and displayed succesfully.
     - Reviews are displayed and paginated so that there is only three reviews showing at a time.
     - The edit button works as intended as it takes the user to the edit review page and allows them to edit their review and save it as they see fit.
+    - The delete button works as intended, when a user clicks it a modal will pop up asking them are they sure as this action cannot be undone. Clicking the delete button within the modal will then delete the review.
 - ## Review Page
     - Upon submitting the review form the user is redirected back to the page they just came from and their review is there on display.
     - Users can only leave one review, so there is no double posts instead if they have already left a review they can edit the one they posted.
@@ -198,6 +199,7 @@ The following was manually tested and resulted in a pass:
 - I would like to add user profiles so users can assign an avatar to their profile and that can be displayed on their reviews, and they can also edit their account details for example changing username, password, email etc.
 - Add "like" button functionality to reviews and filter reviews based on the most likes.
 - Add an API (if one exists) that can pull in new Movies, Games and Shows without the admin having to manually enter them via the admin panel.
+- Add a rating function for a Movie, Game or Show. For example if there is 5 reviews for a movie and the 5 reviews rated it a 10/10 then show that as the rating for the movie when they hover over it and have it adjust as people leave differing scores.
 
 # Deployment
 The website was deployed using Heroku. To deploy to Heroku:
