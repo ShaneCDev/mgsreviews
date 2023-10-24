@@ -191,6 +191,11 @@ def edit_review(request, media_type, slug, id):
         rev_url = 'show_detail'
 
     review = get_object_or_404(Review, id=id)
+
+    if not request.user.is_superuser or request.user != review.author:
+        messages.error(request, 'Sorry you can not do that!')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -208,7 +213,7 @@ def delete_review(request, id):
     review = get_object_or_404(Review, id=id)
 
     if not request.user.is_superuser or request.user != review.author:
-        messages.error(request, 'Sorry only store owners can do that.')
+        messages.error(request, 'Sorry you can not do that!')
         return redirect(reverse('home'))
 
     if review.media_type == 'movie':
