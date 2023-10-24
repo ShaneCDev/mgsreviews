@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from .models import Movie, Game, Show, Review
 from .forms import ReviewForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required 
 
 
 def home(request):
@@ -177,6 +178,7 @@ def review(request, slug, media_type):
     return render(request, 'review.html', context)
 
 
+@login_required
 def edit_review(request, media_type, slug, id):
     if media_type == 'movie':
         media = get_object_or_404(Movie, slug=slug)
@@ -201,8 +203,14 @@ def edit_review(request, media_type, slug, id):
     return render(request, 'edit_review.html', context)
 
 
+@login_required
 def delete_review(request, id):
     review = get_object_or_404(Review, id=id)
+
+    if not request.user.is_superuser or request.user != review.author:
+        messages.error(request, 'Sorry only store owners can do that.')
+        return redirect(reverse('home'))
+
     if review.media_type == 'movie':
         slug = review.movie.slug
         rev_url = reverse('movie_detail', kwargs={'slug': slug})
